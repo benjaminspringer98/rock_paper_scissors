@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+
+    <script>
+
+        function playRound(playerSelection, computerSelection) {
+           playerSelection = normalize(playerSelection);
+           computerSelection = normalize(computerSelection);
+
+           if (playerSelection === "Rock" && computerSelection === "Scissors"
+           || playerSelection === "Paper" && computerSelection === "Rock"
+           || playerSelection === "Scissors" && computerSelection === "Paper") {
+               return "You win! " + playerSelection + " beats " + computerSelection;
+           }
+
+           else if (playerSelection === computerSelection) {
+               return "It's a tie!"
+           }
+
+           else {
+               return "You lose! " + computerSelection + " beats " + playerSelection;
+           }
+
+        }
+
+        let playerSelection = "Rock";
+        let computerSelection = computerPlay(); 
+
+        function computerPlay() {
+            let number = getRandomInt(3); // number can be 0, 1, or 2
+            console.log(number);
+            
+            if (number === 0) {
+                return "Rock";
+            }      
+            else if (number === 1) {
+                return "Paper";
+            }
+            else {
+                return "Scissors";
+            }
+        }
+
+        /* returns random int between 0 (inclusive) and max (exclusive) */
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        /* returns string with only the first letter capitalized */
+        function normalize(string) {
+            return string[0].toUpperCase() + string.slice(1).toLowerCase();
+        }
+
+        // tests:
+        console.log(playRound(playerSelection, computerSelection));
+    </script>
+    
+</body>
+</html>
